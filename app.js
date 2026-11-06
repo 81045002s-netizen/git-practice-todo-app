@@ -5,6 +5,7 @@ const form = document.getElementById('todo-form');
 const input = document.getElementById('todo-input');
 const list = document.getElementById('todo-list');
 const count = document.getElementById('todo-count');
+const today = document.getElementById('today');
 
 let todos = load();
 
@@ -82,4 +83,13 @@ form.addEventListener('submit', (event) => {
   input.focus();
 });
 
+// 在網頁上方顯示今天的日期，例如「11月6日」
+function showToday() {
+  const now = new Date();
+  const pad = (n) => String(n).padStart(2, '0');
+  today.dateTime = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+  today.textContent = `${now.getMonth() + 1}月${now.getDate()}日`;
+}
+
+showToday();
 render();
